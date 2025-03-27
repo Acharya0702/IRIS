@@ -8,7 +8,7 @@ app = Flask(__name__)
 model = joblib.load('model.pkl')
 @app.route("/")
 def home():
-   return render_template('Iris.html')
+   return render_template('index.html')
 @app.route('/predict', methods=['POST'])
 def make_prediction():
     if request.method=='POST':
@@ -25,6 +25,6 @@ def make_prediction():
             prediction='Iris-versicolor'
         else:
             prediction='Iris-virginica'
-        return render_template('Iris.html', prediction='{}'.format(prediction))
+        return render_template('index.html', prediction='{}'.format(prediction))
 if __name__ == '__main__':
     app.run(debug=True)
